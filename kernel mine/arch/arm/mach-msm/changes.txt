@@ -1,0 +1,7 @@
+line 3639 from
+
+I2C_BOARD_INFO("accelerometer", 0x08), /* [HSS] BMA023 : 0x38, BMA222 : 0x08 */
+
+to 
+
+I2C_BOARD_INFO("YamahaBMA222", 0x08), /* [HSS] BMA023 : 0x38, BMA222 : 0x08 */
