@@ -10,11 +10,12 @@ LOCAL_CFLAGS := -DLOG_TAG=\"Sensors\" \
 LOCAL_SRC_FILES := \
         InputEventReader.cpp \
         AkmSensor.cpp \
-        akmdfs/AKFS_APIs_8975/AKFS_AK8975.c \
-        akmdfs/AKFS_APIs_8975/AKFS_AOC.c \
-        akmdfs/AKFS_APIs_8975/AKFS_Device.c \
-        akmdfs/AKFS_APIs_8975/AKFS_Direction.c \
-        akmdfs/AKFS_APIs_8975/AKFS_VNorm.c \
+        akmdfs/libAKM_OSS/AKFS_AOC.c \
+        akmdfs/libAKM_OSS/AKFS_Configure.c \
+        akmdfs/libAKM_OSS/AKFS_Decomp.c \		
+        akmdfs/libAKM_OSS/AKFS_Device.c \
+        akmdfs/libAKM_OSS/AKFS_Direction.c \
+        akmdfs/libAKM_OSS/AKFS_VNorm.c \
         akmdfs/AKFS_FileIO.c \
         sensors.cpp         \
         SensorBase.cpp      \
