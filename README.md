@@ -8,6 +8,10 @@ To build
 or 
 "vendor/samsung/ancora/proprietary/lib/hw/sensors.GT-I8150.so:system/lib/hw/sensors.ancora.so"
 from device-vendor-blobs.mk in vendor tree and the lib itself in the /proprietary/lib/hw/ folder
+4. Add to device tree ancora_tmo.mk
+# Device-specific packages
+PRODUCT_PACKAGES += \
+    sensors.ancora_tmo \
 4. Proceed like normal
 
 Note: In the case of the "arch/arm/mach-msm/board-ancora_tmo.c" refer to the changes.txt to make changes manually to ensure using latest code. And ensure it wont break boot.
