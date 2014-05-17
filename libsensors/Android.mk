@@ -1,11 +1,15 @@
 ifneq ($(TARGET_PROVIDES_LIBSENSORS),true)
 
 LOCAL_PATH := $(call my-dir)
+
+ifneq ($(TARGET_SIMULATOR),true)
+
+# HAL module implemenation, not prelinked, and stored in
+# hw/<SENSORS_HARDWARE_MODULE_ID>.<ro.product.board>.so
 include $(CLEAR_VARS)
 
 
 LOCAL_CFLAGS := -DLOG_TAG=\"Sensors\" \
-                -Wall -Wextra
 
 LOCAL_SRC_FILES := \
         InputEventReader.cpp \
@@ -40,8 +44,12 @@ LOCAL_PRELINK_MODULE := false
 
 LOCAL_CFLAGS  += -DHAL_FOR_AK8975
 
-LOCAL_MODULE := sensors.$(TARGET_BOOTLOADER_BOARD_NAME)
+LOCAL_MODULE := sensors.ancora_tmo
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
+
+endif
+
+endif
