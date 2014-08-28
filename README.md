@@ -17,8 +17,8 @@ Device-specific packages
 PRODUCT_PACKAGES += \
     sensors.ancora \
 5. If needed in the libsensors/android.mk
-rename the module from sensors.ancora_tmo \ to ancora_tmo
-If you made the same change in set 4
+rename the module from "sensors.ancora_tmo" to "sensors.ancora"
+If you made the same change in step 4 or different depending on your device
 6. Proceed like normal
 
 Note: In the case of the "arch/arm/mach-msm/board-ancora_tmo.c" refer to the changes.txt to make changes manually to ensure using latest code. And ensure it wont break boot.
