@@ -23,7 +23,6 @@ LOCAL_SRC_FILES := \
         akmdfs/AKFS_FileIO.c \
         sensors.cpp \
         SensorBase.cpp \
-        LightSensor.cpp \
         ProximitySensor.cpp \
         Bma222Sensor.cpp \
         OrientationSensor.cpp \

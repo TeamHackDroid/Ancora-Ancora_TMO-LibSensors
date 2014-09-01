@@ -42,9 +42,6 @@
 
 #define DELAY_OUT_TIME 0x7FFFFFFF
 
-#define LIGHT_SENSOR_POLLTIME    2000000000
-
-
 #define SENSORS_ACCELERATION	(1<<ID_A)
 #define SENSORS_MAGNETIC_FIELD	(1<<ID_M)
 #define SENSORS_ORIENTATION		(1<<ID_OR)
@@ -166,10 +163,6 @@ static const struct sensor_t sSensorList[] = {
           "Yamaha",
           1, SENSORS_ORIENTATION_HANDLE,
           SENSOR_TYPE_ORIENTATION, RANGE_O, RESOLUTION_O, 4.2f, 10000, 0, 0, {} },
-        { "GP2A Light sensor",
-          "Sharp",
-          1, SENSORS_LIGHT_HANDLE,
-          SENSOR_TYPE_LIGHT, 11000.0f, 1.0f, 0.75f, 0, 0, 0, {} },
         { "GP2A Proximity sensor",
           "Sharp",
           1, SENSORS_PROXIMITY_HANDLE,
@@ -217,7 +210,6 @@ private:
 	enum {
 		acc          = 0,
 		akm          = 1,
-        light           = 0,
         proximity       = 1,
         bosch           = 2,
         yamaha          = 3,
@@ -250,9 +242,7 @@ private:
                 return orientation;
             case ID_P:
                 return proximity;
-            case ID_L:
-                return light;
-                 
+
         }
         return -EINVAL;
     }
@@ -278,11 +268,6 @@ sensors_poll_context_t::sensors_poll_context_t()
 	mPollFds[akm].fd = mSensors[akm]->getFd();
 	mPollFds[akm].events = POLLIN;
 	mPollFds[akm].revents = 0;
-	
-    mSensors[light] = new LightSensor();
-    mPollFds[light].fd = mSensors[light]->getFd();
-    mPollFds[light].events = POLLIN;
-    mPollFds[light].revents = 0;
 
     mSensors[proximity] = new ProximitySensor();
     mPollFds[proximity].fd = mSensors[proximity]->getFd();
@@ -523,4 +508,3 @@ static int open_sensors(const struct hw_module_t* module, const char* id,
 
 	return status;
 }
-
