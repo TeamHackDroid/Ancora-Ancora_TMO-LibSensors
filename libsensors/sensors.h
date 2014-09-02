@@ -35,10 +35,9 @@ __BEGIN_DECLS
 
 #define ID_A  (0)
 #define ID_M  (1)
-#define ID_OR (2)
-#define ID_O (2)
+#define ID_O  (2)
 #define ID_RV (3)
-#define ID_P (4)
+#define ID_P  (4)
 
 /*****************************************************************************/
 
@@ -46,64 +45,32 @@ __BEGIN_DECLS
  * The SENSORS Module
  */
 
- /* the GP2A is a binary proximity sensor that triggers around 5 cm on
+/* the GP2A is a binary proximity sensor that triggers around 5 cm on
  * this hardware */
 #define PROXIMITY_THRESHOLD_GP2A  5.0f
 
 /*****************************************************************************/
 
-/* For Accelerometer */
 #define EVENT_TYPE_ACCEL_X          ABS_X
 #define EVENT_TYPE_ACCEL_Y          ABS_Y
 #define EVENT_TYPE_ACCEL_Z          ABS_Z
-#define EVENT_TYPE_ACCEL_STATUS     ABS_RX
 
-/* For Magnetometer */
+#define EVENT_TYPE_YAW              ABS_X
+#define EVENT_TYPE_PITCH            ABS_Y
+#define EVENT_TYPE_ROLL             ABS_Z
+
 #define EVENT_TYPE_MAGV_X           ABS_RY
 #define EVENT_TYPE_MAGV_Y           ABS_RZ
 #define EVENT_TYPE_MAGV_Z           ABS_THROTTLE
 #define EVENT_TYPE_MAGV_STATUS      ABS_RUDDER
 
-/* Fusion Orientaion */
-#define EVENT_TYPE_YAW              ABS_HAT0Y
-#define EVENT_TYPE_PITCH            ABS_HAT1X
-#define EVENT_TYPE_ROLL             ABS_HAT1Y
-
-/* ADC Code
-#define EVENT_TYPE_YAW              ABS_X
-#define EVENT_TYPE_PITCH            ABS_Y
-#define EVENT_TYPE_ROLL             ABS_Z
-
-#define EVENT_TYPE_MAGV_X           ABS_X
-#define EVENT_TYPE_MAGV_Y           ABS_Y
-#define EVENT_TYPE_MAGV_Z           ABS_Z
-*/
-
 /* Fusion Rotation Vector */
 #define EVENT_TYPE_ROTVEC_X         ABS_TILT_X
 #define EVENT_TYPE_ROTVEC_Y         ABS_TILT_Y
 #define EVENT_TYPE_ROTVEC_Z         ABS_TOOL_WIDTH
-#define EVENT_TYPE_ROTVEC_W			ABS_VOLUME
-
-#define CONVERT_Q14					(1.0f / 16384.0f)
-#define CONVERT_Q16					(1.0f / 65536.0f)
-#define CONVERT_AKM_G				(GRAVITY_EARTH / 720.0f)
+#define EVENT_TYPE_ROTVEC_W	    ABS_VOLUME
 
 #define EVENT_TYPE_PROXIMITY        ABS_DISTANCE
-
-/* conversion of acceleration data to SI units (m/s^2) */
-/* 720 LSB = 1G */
-#define AKSC_LSG					(720.0f)
-#define CONVERT_A					CONVERT_AKM_G
-/* conversion of magnetic data to uT units */
-#define CONVERT_M					(0.06f)
-
-/* conversion of orientation data (Q6) to degree units */
-#define CONVERT_OR					(1.0f / 64.0f)
-/* conversion of rotation vector (Q14) data to float */
-#define CONVERT_RV					CONVERT_Q14
-
-#define SENSOR_STATE_MASK           (0x7FFF)
 
 // conversion of acceleration data to SI units (m/s^2)
 #define RANGE_A                     (2*GRAVITY_EARTH)
@@ -114,12 +81,10 @@ __BEGIN_DECLS
 #define CONVERT_A_Z                 (CONVERT_A)
 
 // conversion of magnetic data to uT units
-#define RANGE_M                     300.0f
-#define RESOLUTION_M                (RANGE_M/(512))
-#define CONVERT_M                   (1.0f/1000.0f)
-#define CONVERT_M_X                 (CONVERT_M)
-#define CONVERT_M_Y                 (CONVERT_M)
-#define CONVERT_M_Z                 (CONVERT_M)
+#define CONVERT_M                   (0.06f)
+
+/* conversion of rotation vector (Q14) data to float */
+#define CONVERT_RV                  CONVERT_Q14
 
 /* conversion of orientation data to degree units */
 #define RANGE_O                     360.0f

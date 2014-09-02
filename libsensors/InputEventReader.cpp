@@ -24,8 +24,9 @@
 
 #include <linux/input.h>
 
-#include "AKMLog.h"
 #include <cutils/log.h>
+
+#include "AKMLog.h"
 
 #include "InputEventReader.h"
 

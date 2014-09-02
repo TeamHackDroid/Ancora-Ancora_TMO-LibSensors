@@ -22,7 +22,7 @@
 #include <dirent.h>
 #include <sys/select.h>
 
-#include "AKMLog.h"
+#include <cutils/log.h>
 
 #include <linux/input.h>
 
@@ -64,26 +64,6 @@ int SensorBase::close_device() {
         dev_fd = -1;
     }
     return 0;
-}
-
-int SensorBase::write_sys_attribute(
-	const char *path, const char *value, int bytes)
-{
-    int fd, amt;
-
-	fd = open(path, O_WRONLY);
-    if (fd < 0) {
-        ALOGE("SensorBase::write_attr failed to open %s (%s)",
-			path, strerror(errno));
-        return -1;
-	}
-
-    amt = write(fd, value, bytes);
-	amt = ((amt == -1) ? -errno : 0);
-	ALOGE_IF(amt < 0, "SensorBase::write_attr failed to write %s (%s)",
-		path, strerror(errno));
-    close(fd);
-	return amt;
 }
 
 int SensorBase::getFd() const {
